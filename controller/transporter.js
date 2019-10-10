@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
-const xoauth2 = require('xoauth2');
 
+// Details for mail sending
 const transport = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -13,19 +13,24 @@ const transport = nodemailer.createTransport({
   }
 });
 
-const send = (req, res) => {
-  const { email, name, text, subject } = req.body;
 
+// Send mail
+const send = (req, res) => {
+  const { email, name, text, subject } = req.body; // Destructure body
+
+  // Get where message is from
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
 
+  // Actual message
   const message = {
     from,
-    to: 'FFF',
+    to: 'skim7420@gmail.com',
     subject: `New message from ${from} - ${subject}`,
     text,
     replyTo: from
   };
 
+  // Send mail and return promise
   return new Promise((resolve, reject) => {
     transport.sendMail(message, (error, info) =>
       error ? reject(error) : resolve(info)

@@ -16,6 +16,7 @@ app.post('/send', (req, res) => {
     .catch(err => console.log('nope'));
 });
 
+// Upset cause not exactly "authorized" app
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 app.listen(3000, () => {
