@@ -9,6 +9,8 @@ const app = express(); // So we can have a server going
 app.use(bodyParser.json()); // So we can get form data
 app.use(cors()); // To connect front and back end
 
+app.get('/', (req, res) => {res.send('Success')});
+
 app.post('/send', (req, res) => {
   transporter
     .send(req, res)
