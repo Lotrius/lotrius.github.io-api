@@ -19,6 +19,6 @@ app.post('/send', (req, res) => {
 // Upset cause not exactly "authorized" app
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-app.listen(3000, () => {
-  console.log(`App listening on port 3000!`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`App listening on port ${process.env.PORT}!`);
 });
