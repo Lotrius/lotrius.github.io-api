@@ -21,6 +21,6 @@ app.post("/send", (req, res) => {
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 // We are on port 3000 currently
-const listener = app.listen(3000, () => {
+const listener = app.listen(process.env.PORT || 3000, () => {
   console.log(`App listening on port ${listener.address().port}!`);
 });
