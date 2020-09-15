@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const transport = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    type: "OAuth2",
+    type: "xxxx",
     user: "xxxx",
     clientId: "xxxx",
     clientSecret: "xxxx",
@@ -30,7 +30,7 @@ const send = (req, res) => {
   // Actual message
   const message = {
     from, // Gmail will auto revert this to the authenticated user and there's nothing you can do
-    to: "skim7420@gmail.com",
+    to: "xxxxx",
     subject: `New message from ${from} - ${subject}`,
     text,
     replyTo: from,
