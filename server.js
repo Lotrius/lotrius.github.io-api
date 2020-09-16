@@ -12,7 +12,7 @@ app.use(cors()); // To connect front and back end
 // Endpoint for sending mail
 app.post("/send", (req, res) => {
   transporter
-    .send(req, res)
+    .send(req)
     .then((rep) => res.json("Success"))
     .catch((err) => console.log("nope"));
 });

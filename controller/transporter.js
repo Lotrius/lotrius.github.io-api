@@ -23,18 +23,18 @@ const transport = nodemailer.createTransport({
  * @param {*} res the response
  *
  */
-const send = (req, res) => {
-  const { email, name, text, subject } = req.body; // Destructure body
+const send = (req) => {
+  const { email, name, message, subject } = req.body; // Destructure body
 
   // Get where message is from
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
 
   // Actual message
-  const message = {
+  const fullEmail = {
     from, // Gmail will auto revert this to the authenticated user and there's nothing you can do
     to: "skim7420@gmail.com",
     subject: `New message from ${from} - ${subject}`,
-    text,
+    text: message,
     replyTo: from,
   };
 
@@ -42,7 +42,7 @@ const send = (req, res) => {
    * Send mail and return promise
    */
   return new Promise((resolve, reject) => {
-    transport.sendMail(message, (error, info) =>
+    transport.sendMail(fullEmail, (error, info) =>
       error ? reject(error) : resolve(info)
     );
   });
